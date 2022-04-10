@@ -1,61 +1,40 @@
 pipeline {
-
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
-    tools { 
-        maven 'maven3'
-    }
-
-    options {
-buildDiscarderlogRotator( 
-daysToKeepStr: '15', 
-numToKeepStr: '10'
-            )
-    }
-
-    environment {
-        APP_NAME = "STUDENT_APP"
-        APP_ENV  = "DEV"
-    }
-
+    agent any
+  
     stages {
-
-        stage('Cleanup Workspace') {
+        stage('Stage1-21050672') {
             steps {
-cleanWs()
-sh"""
-                echo "Cleaned Up Workspace for ${APP_NAME}"
-                """
+                sh 'echo "Stage 1 Completed-21050672"'
+                
             }
         }
-
-        stage('Code Checkout') {
+    
+        stage('Stage2-21050672') {
+           
+            
             steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
+                sh 'echo "Stage 2 Completed-21050672"'
             }
+            
         }
-
-        stage('Code Build') {
+        stage('Stage3-21050672') {
             steps {
-sh'mvn install -Dmaven.test.skip=true'
+                sh 'echo "Stage 3 Completed-21050672"'
             }
+            
         }
-
-        stage('Printing All Global Variables') {
+          stage('Stage4-21050672') {
+           steps { input('Continue to Deploy?')
+               
+           } 
+              
+          }
+            stage('Stage5-21050672') {
             steps {
-sh"""
-                env
-                """
+                sh 'echo "Work Released-21050672"'
             }
+            
         }
-
-    }   
-}
+            
+            }
+            }
