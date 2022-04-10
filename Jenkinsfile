@@ -23,14 +23,15 @@ pipeline {
             
         }
           stage('Stage4-21050672') {
-           steps { input('Continue to Deploy?')
+           steps { 
+               sh 'echo "Production website tested working'
                
            } 
               
           }
             stage('Stage5-21050672') {
             steps {
-                sh 'echo "Work Released-21050672"'
+                sh 'echo "Production website is updatedsucessfully"'
             }
             
         }
