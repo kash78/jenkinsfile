@@ -12,8 +12,7 @@ pipeline {
         stage('Stage2-21050672') {
            
             
-            steps {
-                sh 'echo "Stage 2 Completed-21050672"'
+             steps { input('Push changes to Production?')
             }
             
         }
